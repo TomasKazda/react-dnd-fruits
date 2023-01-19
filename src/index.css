@@ -11,3 +11,108 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+table.board {
+  border-collapse: separated;
+  border: thin solid black;
+}
+table.board td {
+  border: thin solid black;
+  width: 64px;
+  height: 64px;
+  background-color: ivory;
+  text-align: center;
+  vertical-align: middle;
+}
+table.board td.dark {
+  background-color: black;
+}
+table.board td.selected {
+  border-color: red;
+}
+.stone, .dame {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: move;
+  box-shadow: 5px 5px 5px darkgray;
+  color: black;
+  font-size: 24px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+.stone.white {
+  background-color: white;
+  border-color: black;
+  color: black;
+}
+.stone.black {
+  background-color: black;
+  border-color: white;
+  color: white;
+}
+.dame.white {
+  background-color: gold;
+  border-color: black;
+  color: black;
+}
+.dame.black {
+  background-color: darkslateblue;
+  border-color: white;
+  color: white;
+}
+ol.list {
+  border: 1px solid black;
+  padding: 1em;
+}
+ol.list li.item {
+  margin: .5em;
+  cursor: move
+}
+.fruits {
+  display: flex;
+  flex-direction: row;
+}
+.basket {
+  margin: 1em;
+  border: 3px solid black;
+  border-top: none;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+}
+.basket.over {
+  border-color: red;
+}
+.fruit {
+  margin: 10px;
+  font-size: 2em;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+.fruit::before {
+  content: attr(data-cnt);
+  position: absolute;
+  left: 50%;
+  font-size: 0.75em;
+  color: white;
+  transform: translateX(-50%);
+  margin-top: 0.25em;
+}
+@keyframes brain {
+  50% { transform: translateX(3px) rotate(2deg);}
+  100% {transform: translateX(-3px) rotate(-2deg);}
+}
+
+.basket:not(.over) .fruit {
+  animation-name: brain;
+  animation-duration: 0.15s;
+  animation-timing-function: linear;
+  animation-iteration-count: 2;
+}
